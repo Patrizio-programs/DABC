@@ -1,0 +1,13 @@
+* {
+  font-family: raleway-semibold, raleway, sans-serif;
+  font-style: normal;
+  font-variant-caps: normal;
+  font-variant-east-asian: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-weight: 700;
+}
+
+.custom-color {
+  color: #b71110;
+}
