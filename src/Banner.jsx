@@ -22,7 +22,7 @@ const Banner = () => {
       .then((response) => response.data)
       .then((data) => {
         const newData = data.items;
-        
+
         const today = new Date();
         const closestEvent = data.items.reduce(
           (closest, current) => {
@@ -45,10 +45,9 @@ const Banner = () => {
         setEventSrc(eventSrc);
 
 
-        
+
       });
   }, []);
-
 
   if (!event) {
     return null; // or return a loading spinner or message
@@ -61,7 +60,7 @@ const Banner = () => {
           <h5 className="mb-0">Event: {event.title}</h5>
           <div className="d-flex justify-content-between align-items-end mt-2">
             <div className="flex-grow-1">
-              <a href={eventSrc}>Event Page</a>
+              <a href={eventSrc} target='blank'>Event Page</a>
             </div>
             <div>
               <p className="mb-0 border-1 ">
