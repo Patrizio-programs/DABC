@@ -4,6 +4,10 @@ import "./banner.css";
 
 const Banner = () => {
   const [event, setEvent] = useState(null);
+  const [eventSrc, setEventSrc] = useState(null);
+
+
+
 
   useEffect(() => {
     axios
@@ -17,6 +21,8 @@ const Banner = () => {
       )
       .then((response) => response.data)
       .then((data) => {
+        const newData = data.items;
+        
         const today = new Date();
         const closestEvent = data.items.reduce(
           (closest, current) => {
@@ -32,8 +38,17 @@ const Banner = () => {
           { event: null, dayDiff: Infinity }
         ).event;
         setEvent(closestEvent);
+
+        const linkEvent = newData.find(event => event.id === closestEvent.id);
+        const courseLink = linkEvent["link-courses-title"];
+        const eventSrc = `https://www.dyslexiaallianceforblackchildren.org/${courseLink}`;
+        setEventSrc(eventSrc);
+
+
+        
       });
   }, []);
+
 
   if (!event) {
     return null; // or return a loading spinner or message
@@ -42,14 +57,14 @@ const Banner = () => {
   return (
     <div className="row">
       <div className="col-md-12">
-        <div className="bg-light custom-color py-0 px-0 shadow-lg">
+        <div className="py-0 px-0">
           <h5 className="mb-0">Event: {event.title}</h5>
           <div className="d-flex justify-content-between align-items-end mt-2">
             <div className="flex-grow-1">
-              <p className="mb-0 small-text">{event.shortEventDescription}</p>
+              <a href={eventSrc}>Event Page</a>
             </div>
             <div>
-              <p className="mb-0 border border-primary border-1 small-text">
+              <p className="mb-0 border-1 ">
                 {event.eventDate}
               </p>
             </div>
