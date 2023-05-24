@@ -76,9 +76,13 @@ function Events() {
   };
 
   return (
-    <div>
+    <div className="space">
+    <div className="calendar">
       <RevoCalendar {...revoCalendarProps} />
       <br />
+      </div>
+      
+      
       <div className="event-row">
         {calendarEvents.map((event) => (
           <Col md={6} lg={4} key={event.name}>

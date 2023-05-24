@@ -16,12 +16,15 @@ body {
 }
 
 .event-row{
-
+  margin-top: 10px;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
 }
 
-
+.space{
+  background-color: white;
+}
 .card {
   margin: 0 10px 20px;
   padding: 5px;
