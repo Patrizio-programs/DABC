@@ -79,7 +79,7 @@ function Events() {
     <div>
       <RevoCalendar {...revoCalendarProps} />
       <br />
-      <Row>
+      <div className="event-row">
         {calendarEvents.map((event) => (
           <Col md={6} lg={4} key={event.name}>
             <div className="card mb-4">
@@ -92,7 +92,7 @@ function Events() {
             </div>
           </Col>
         ))}
-      </Row>
+      </div>
     </div>
   );
 }

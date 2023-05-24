@@ -13,6 +13,8 @@
 }
 
 
-.text-box{
-  width: 100vw;
+.banner-row {
+  background-color: #b71110;
+  color: white;
+  max-width: 100vw;
 }

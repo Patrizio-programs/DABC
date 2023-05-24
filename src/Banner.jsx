@@ -53,14 +53,17 @@ const Banner = () => {
   }
 
   return (
-    <div className="banner-row">
+    
+    <div className="row">
       <div className="text-box">
         <div className="py-0 px-0">
-          <h5 className="mb-0">Event: {event !== "No upcoming events" ? event.title : event}</h5>
+          <h6 className="mb-0">Event: {event !== "No upcoming events" ? event.title : event}</h6>
           <div className="d-flex mt-2">
             <div className="flex-grow-1">
               {event !== "No upcoming events" && <a href={eventSrc} target='blank'>Event Page</a>}
-              <p className="mb-0 border-1 ">
+            </div>
+            <div>
+            <p className="mb-0 border-1 ">
                 {event !== "No upcoming events" && event.eventDate}
               </p>
             </div>
@@ -68,6 +71,7 @@ const Banner = () => {
         </div>
       </div>
     </div>
+   
   );
 };
 
