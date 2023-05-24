@@ -6,9 +6,6 @@ const Banner = () => {
   const [event, setEvent] = useState(null);
   const [eventSrc, setEventSrc] = useState(null);
 
-
-
-
   useEffect(() => {
     axios
       .get(
@@ -35,17 +32,19 @@ const Banner = () => {
               return closest;
             }
           },
-          { event: null, dayDiff: Infinity }
+          {event: null, dayDiff: Infinity }
         ).event;
-        setEvent(closestEvent);
 
-        const linkEvent = newData.find(event => event.id === closestEvent.id);
-        const courseLink = linkEvent["link-courses-title"];
-        const eventSrc = `https://www.dyslexiaallianceforblackchildren.org/${courseLink}`;
-        setEventSrc(eventSrc);
+        if (closestEvent) {
+          setEvent(closestEvent);
 
-
-
+          const linkEvent = newData.find(event => event.id === closestEvent.id);
+          const courseLink = linkEvent["link-courses-title"];
+          const eventSrc = `https://www.dyslexiaallianceforblackchildren.org/${courseLink}`;
+          setEventSrc(eventSrc);
+        } else {
+          setEvent("No upcoming events");
+        }
       });
   }, []);
 
@@ -54,17 +53,15 @@ const Banner = () => {
   }
 
   return (
-    <div className="row">
-      <div className="col-md-12">
+    <div className="banner-row">
+      <div className="text-box">
         <div className="py-0 px-0">
-          <h5 className="mb-0">Event: {event.title}</h5>
-          <div className="d-flex justify-content-between align-items-end mt-2">
+          <h5 className="mb-0">Event: {event !== "No upcoming events" ? event.title : event}</h5>
+          <div className="d-flex mt-2">
             <div className="flex-grow-1">
-              <a href={eventSrc} target='blank'>Event Page</a>
-            </div>
-            <div>
+              {event !== "No upcoming events" && <a href={eventSrc} target='blank'>Event Page</a>}
               <p className="mb-0 border-1 ">
-                {event.eventDate}
+                {event !== "No upcoming events" && event.eventDate}
               </p>
             </div>
           </div>

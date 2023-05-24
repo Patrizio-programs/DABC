@@ -1,9 +1,11 @@
-.row {
-  max-width: 45vw;
-  margin: auto;
+.banner-row {
+  max-width: 100vw;
   margin-top: 0;
   margin-bottom: 0;
   height: auto;
+  color: white;
+  text-align: center;
+  background-color: #b71110;
 }
 
 @media (max-width: 576px) {
