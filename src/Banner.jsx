@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./banner.css";
+import { format } from 'date-fns';
 
 const Banner = () => {
   const [event, setEvent] = useState(null);
@@ -52,19 +53,23 @@ const Banner = () => {
     return null; // or return a loading spinner or message
   }
 
+  const date = new Date(event.eventDate);
+  const formattedDate = format(date, 'EEEE, MMMM d, yyyy');
+  console.log(formattedDate)
+
   return (
     
     <div className="row">
       <div className="text-box">
         <div className="py-0 px-0">
-          <h6 className="mb-0">Event: {event !== "No upcoming events" ? event.title : event}</h6>
+          <h6 className="mb-0">Upcoming Event: {event !== "No upcoming events" ? event.title : event}</h6>
           <div className="d-flex mt-2">
             <div className="flex-grow-1">
-              {event !== "No upcoming events" && <a href={eventSrc} target='blank'>Event Page</a>}
+              {event !== "No upcoming events" && <a href={eventSrc} target='blank' className="register-link">Register</a>}
             </div>
             <div>
             <p className="mb-0 border-1 ">
-                {event !== "No upcoming events" && event.eventDate}
+                { event !== "No upcoming events" && formattedDate}
               </p>
             </div>
           </div>
