@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./banner.css";
 import { format } from 'date-fns';
+import moment from 'moment';
 
 const Banner = () => {
   const [event, setEvent] = useState(null);
@@ -52,10 +53,16 @@ const Banner = () => {
   if (!event) {
     return null; // or return a loading spinner or message
   }
+ 
 
-  const date = new Date(event.eventDate);
-  const formattedDate = format(date, 'EEEE, MMMM d, yyyy');
-  console.log(formattedDate)
+
+  const dateStr = event.eventDate;
+  const longDate = moment(dateStr).format('dddd, MMMM D, YYYY');
+  console.log(longDate); // Output: Wednesday, June 7, 2023 format
+
+  
+
+
 
   return (
     
@@ -69,7 +76,7 @@ const Banner = () => {
             </div>
             <div>
             <p className="mb-0 border-1 ">
-                { event !== "No upcoming events" && formattedDate}
+                { event !== "No upcoming events" && longDate}
               </p>
             </div>
           </div>
